@@ -1,0 +1,47 @@
+<mujoco model="mushr_tx2">
+<compiler angle="radian"/>
+<asset>
+<mesh name="mushr_base_collision_tx2" file="mushr_base_collision_tx2.stl"/>
+<texture type="skybox" builtin="gradient" rgb1="0.6 0.7 0.9" rgb2="0.9 0.9 0.95" width="256" height="256"/>
+<texture name="groundplane" type="2d" builtin="checker" rgb1="0.8 0.8 0.8" rgb2="0.6 0.6 0.6" width="512" height="512"/>
+<material name="groundplane" texture="groundplane" texrepeat="5 5" reflectance="0.1"/>
+</asset>
+<worldbody>
+<geom name="floor" type="plane" size="70 110 0.1" material="groundplane"/>
+<body name="base_footprint">
+<inertial pos="0.0034485 0 0.103085" quat="0 0.671192 0 0.741284" mass="3.602" diaginertia="0.0474358 0.0444616 0.0250719"/>
+<joint name="world_to_base_footprint" type="free" limited="false" actuatorfrclimited="false"/>
+<geom pos="0 0 0.094655" type="mesh" mesh="mushr_base_collision_tx2"/>
+<geom size="0.0005 0.0005 0.0005" pos="0.10075 0 0.259655" type="box" rgba="0 0 0 1"/>
+<geom size="0.005 0.005 0.005" pos="0.03975 0 0.274655" type="box" rgba="0 0 0 1"/>
+<body name="front_left/wheel_steer_link" pos="0.1385 0.115 0.0488">
+<inertial pos="0 0 0" mass="0.01" diaginertia="1e-05 1e-05 1e-05"/>
+<joint name="front_left_wheel_steer" pos="0 0 0" axis="0 0 1" range="-0.6 0.6" actuatorfrcrange="-10 10"/>
+<body name="front_left/wheel_link">
+<inertial pos="0 0 0" quat="0.707107 0 0 0.707107" mass="0.1" diaginertia="0.000125 7e-05 7e-05"/>
+<joint name="front_left_wheel_throttle" pos="0 0 0" axis="0 1 0" actuatorfrcrange="-10 10"/>
+<geom size="0.05 0.0215" quat="0.707107 0.707107 0 0" type="cylinder"/>
+</body>
+</body>
+<body name="front_right/wheel_steer_link" pos="0.1385 -0.115 0.0488">
+<inertial pos="0 0 0" mass="0.01" diaginertia="1e-05 1e-05 1e-05"/>
+<joint name="front_right_wheel_steer" pos="0 0 0" axis="0 0 1" range="-0.6 0.6" actuatorfrcrange="-10 10"/>
+<body name="front_right/wheel_link">
+<inertial pos="0 0 0" quat="0.707107 0 0 0.707107" mass="0.1" diaginertia="0.000125 7e-05 7e-05"/>
+<joint name="front_right_wheel_throttle" pos="0 0 0" axis="0 1 0" actuatorfrcrange="-10 10"/>
+<geom size="0.05 0.0215" quat="0.707107 0.707107 0 0" type="cylinder"/>
+</body>
+</body>
+<body name="back_left/wheel_link" pos="-0.158 0.115 0.0488">
+<inertial pos="0 0 0" quat="0.707107 0 0 0.707107" mass="0.1" diaginertia="0.000125 7e-05 7e-05"/>
+<joint name="back_left_wheel_throttle" pos="0 0 0" axis="0 1 0" actuatorfrcrange="-10 10"/>
+<geom size="0.05 0.0215" quat="0.707107 0.707107 0 0" type="cylinder"/>
+</body>
+<body name="back_right/wheel_link" pos="-0.158 -0.115 0.0488">
+<inertial pos="0 0 0" quat="0.707107 0 0 0.707107" mass="0.1" diaginertia="0.000125 7e-05 7e-05"/>
+<joint name="back_right_wheel_throttle" pos="0 0 0" axis="0 1 0" actuatorfrcrange="-10 10"/>
+<geom size="0.05 0.0215" quat="0.707107 0.707107 0 0" type="cylinder"/>
+</body>
+</body>
+</worldbody>
+</mujoco>

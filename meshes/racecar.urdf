@@ -1,0 +1,329 @@
+<?xml version="1.0" ?>
+<robot name="mushr_tx2">
+  <material name="red"><color rgba="1 0 0 1"/></material>
+  <material name="orange"><color rgba="1 0.55 0 1"/></material>
+  <material name="yellow"><color rgba="1 1 0 1"/></material>
+  <material name="green"><color rgba="0 1 0 1"/></material>
+  <material name="blue"><color rgba="0 0 1 1"/></material>
+  <material name="purple"><color rgba="0.6 0.2 0.6 1"/></material>
+  <material name="white"><color rgba="1 1 1 1"/></material>
+  <material name="black"><color rgba="0 0 0 1"/></material>
+  <material name="gold"><color rgba="1 0.84 0 1"/></material>
+  <material name="teal"><color rgba="0 0.8 0.8 1"/></material>
+  <material name="none"><color rgba="0 0 0 1"/></material>
+  <material name="aluminum"><color rgba="0.5 0.5 0.5 1"/></material>
+  <material name="plastic"><color rgba="0.1 0.1 0.1 1"/></material>
+
+  <link name="world"/>
+    <joint name="world_to_base_footprint" type="floating">
+      <parent link="world"/>
+      <child link="base_footprint"/>
+    </joint>
+
+  <link name="base_footprint">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="0.1"/>
+      <inertia ixx="1e-4" ixy="0" ixz="0" iyy="1e-4" iyz="0" izz="1e-4"/>
+    </inertial>
+  </link>
+
+  <link name="base_link">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="3.0"/>
+      <inertia ixx="0.015725" ixy="0" ixz="0" iyy="0.033125" iyz="0" izz="0.043850"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/mushr_base_tx2.stl"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/mushr_base_collision_tx2.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="platform_link">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="0.2"/>
+      <inertia ixx="0.000667" ixy="0" ixz="0" iyy="0.001500" iyz="0" izz="0.002167"/>
+    </inertial>
+  </link>
+
+  <link name="insets_link">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="0.1"/>
+      <inertia ixx="1e-4" ixy="0" ixz="0" iyy="1e-4" iyz="0" izz="1e-4"/>
+    </inertial>
+  </link>
+
+  <joint name="base_footprint_to_base_link" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0 0.094655"/>
+    <parent link="base_footprint"/>
+    <child link="base_link"/>
+  </joint>
+
+  <joint name="base_link_to_platform_link" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0 0.0"/>
+    <parent link="base_link"/>
+    <child link="platform_link"/>
+  </joint>
+
+  <joint name="base_link_to_insets_link" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0 0.0"/>
+    <parent link="base_link"/>
+    <child link="insets_link"/>
+  </joint>
+
+  <!-- FRONT LEFT WHEEL -->
+  <link name="front_left/wheel_link">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="0.1"/>
+      <inertia ixx="0.000070" ixy="0" ixz="0" iyy="0.000125" iyz="0" izz="0.000070"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 3.141592" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/mushr_wheel.stl"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="1.5707963 0 0" xyz="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.05" length="0.043"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- FRONT RIGHT WHEEL -->
+  <link name="front_right/wheel_link">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="0.1"/>
+      <inertia ixx="0.000070" ixy="0" ixz="0" iyy="0.000125" iyz="0" izz="0.000070"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/mushr_wheel.stl"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="1.5707963 0 0" xyz="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.05" length="0.043"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- BACK LEFT WHEEL -->
+  <link name="back_left/wheel_link">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="0.1"/>
+      <inertia ixx="0.000070" ixy="0" ixz="0" iyy="0.000125" iyz="0" izz="0.000070"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 3.141592" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/mushr_wheel.stl"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="1.5707963 0 0" xyz="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.05" length="0.043"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- BACK RIGHT WHEEL -->
+  <link name="back_right/wheel_link">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="0.1"/>
+      <inertia ixx="0.000070" ixy="0" ixz="0" iyy="0.000125" iyz="0" izz="0.000070"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/mushr_wheel.stl"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="1.5707963 0 0" xyz="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.05" length="0.043"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- WHEEL FRICTION PROPERTIES -->
+  
+
+  
+
+  
+
+  
+
+  <!-- CAMERA -->
+  <joint name="camera_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0.10075 0.0 0.165"/>
+    <parent link="base_link"/>
+    <child link="camera_bottom_screw_frame"/>
+  </joint>
+
+  <link name="camera_bottom_screw_frame"/>
+
+  <joint name="camera_link_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <parent link="camera_bottom_screw_frame"/>
+    <child link="camera_link"/>
+  </joint>
+
+  <link name="camera_link">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.025 0.09 0.025"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.072"/>
+      <origin xyz="0 0 0"/>
+      <inertia ixx="0.000008" ixy="0.0" ixz="0.0" iyy="0.000052" iyz="0.0" izz="0.000052"/>
+    </inertial>
+  </link>
+
+  <joint name="camera_optical_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="-1.5707963 0 -1.5707963"/>
+    <parent link="camera_link"/>
+    <child link="camera_link_optical"/>
+  </joint>
+
+  <link name="camera_link_optical"/>
+
+  <!-- STEERING LINKS -->
+  <link name="front_left/wheel_steer_link">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="0.01"/>
+      <inertia ixx="1e-05" iyy="1e-05" izz="1e-05" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+  </link>
+
+  <link name="front_right/wheel_steer_link">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="0.01"/>
+      <inertia ixx="1e-05" iyy="1e-05" izz="1e-05" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+  </link>
+
+  <!-- STEERING JOINTS -->
+  <joint name="front_left_wheel_steer" type="revolute">
+    <axis xyz="0 0 1"/>
+    <limit effort="10.0" lower="-0.6" upper="0.6" velocity="2.0"/>
+    <origin rpy="0 0 0" xyz="0.1385 0.115 -0.045855"/>
+    <parent link="base_link"/>
+    <child link="front_left/wheel_steer_link"/>
+  </joint>
+
+  <joint name="front_right_wheel_steer" type="revolute">
+    <axis xyz="0 0 1"/>
+    <limit effort="10.0" lower="-0.6" upper="0.6" velocity="2.0"/>
+    <origin rpy="0 0 0" xyz="0.1385 -0.115 -0.045855"/>
+    <parent link="base_link"/>
+    <child link="front_right/wheel_steer_link"/>
+  </joint>
+
+  <!-- DRIVE JOINTS -->
+  <joint name="front_left_wheel_throttle" type="continuous">
+    <axis xyz="0 1 0"/>
+    <limit effort="10.0" velocity="100.0"/>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <parent link="front_left/wheel_steer_link"/>
+    <child link="front_left/wheel_link"/>
+  </joint>
+
+  <joint name="front_right_wheel_throttle" type="continuous">
+    <axis xyz="0 1 0"/>
+    <limit effort="10.0" velocity="100.0"/>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <parent link="front_right/wheel_steer_link"/>
+    <child link="front_right/wheel_link"/>
+  </joint>
+
+  <joint name="back_left_wheel_throttle" type="continuous">
+    <axis xyz="0 1 0"/>
+    <limit effort="10.0" velocity="100.0"/>
+    <origin rpy="0 0 0" xyz="-0.158 0.115 -0.045855"/>
+    <parent link="base_link"/>
+    <child link="back_left/wheel_link"/>
+  </joint>
+
+  <joint name="back_right_wheel_throttle" type="continuous">
+    <axis xyz="0 1 0"/>
+    <limit effort="10.0" velocity="100.0"/>
+    <origin rpy="0 0 0" xyz="-0.158 -0.115 -0.045855"/>
+    <parent link="base_link"/>
+    <child link="back_right/wheel_link"/>
+  </joint>
+
+  <!-- CAMERA SENSOR -->
+  
+
+  <!-- DRIVE PLUGIN -->
+  
+
+  <joint name="laser_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0.03975 0.0 0.180"/>
+    <parent link="base_link"/>
+    <child link="laser"/>
+  </joint>
+
+  <link name="laser">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0.0474"/>
+      <geometry>
+        <box size="0.05 0.05 0.07"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.010 0.010 0.010"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <!-- mass + inertia sourced directly from robotnik_sensors hokuyo_ust10lx.urdf.xacro -->
+      <origin rpy="0 0 0" xyz="0.0 0 0.035"/>
+      <mass value="0.130"/>
+      <!-- solid cuboid inertia, w=0.05 h=0.05 d=0.07, m=0.130 -->
+      <inertia ixx="0.0000817" ixy="0.0" ixz="0.0" iyy="0.0000817" iyz="0.0" izz="0.0000542"/>
+    </inertial>
+  </link>
+
+  <!-- LIDAR SENSOR PLUGIN (Gazebo) -->
+  <!-- Specs: 270 deg FOV, 0.06-10m range, 40Hz, 0.25 deg resolution, 1081 samples -->
+  <!-- Matches urg_node's real frame_id: "laser", confirmed via rostopic echo /scan -->
+  
+
+</robot>

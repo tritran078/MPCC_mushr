@@ -1,0 +1,7 @@
+<!-- Scene = MuSHR car + Budapest track walls.
+     The car file already has the floor, skybox and lighting, so the track file only adds walls.
+     Load THIS file in Python instead of racecar_converted.xml. -->
+<mujoco model="mushr_budapest">
+  <include file="racecar_converted.xml"/>
+  <include file="budapest_walls.xml"/>
+</mujoco>
