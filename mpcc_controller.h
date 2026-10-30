@@ -25,6 +25,17 @@ public:
     double get_track_length() const;   // total centerline length (m)
 
 private:
+    // Arc-length position of the centerline point closest to (px, py).
+    // Searches only a window of track around the current theta_, so it can never
+    // jump to a different part of the circuit.
+    double project_theta(double px, double py) const;
+
+    // centerline points + their cumulative arc length, kept for project_theta()
+    std::vector<double> wp_x_;
+    std::vector<double> wp_y_;
+    std::vector<double> wp_s_;
+    double search_window_;   // how far along the track to search, in metres
+
     double dt_;
     int horizon_;
     int speed_lookahead_;

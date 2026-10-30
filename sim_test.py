@@ -46,12 +46,12 @@ wp_x, wp_y = load_waypoints("budapest_centerline.csv")
 cost = mpcc_py.CostParam()
 cost.q_c      = 500.0   # contour error weight: pull toward centerline (low = more corner cutting)
 cost.q_l      = 500.0   # lag error weight: keeps theta beside the car (keep high)
-cost.gamma    = 500.0   # progress reward: go fast
+cost.gamma    = 600.0   # progress reward: go fast
 cost.R_PWM    = 0.9    # penalty on large throttle / brake
 cost.R_steer  = 0.9     # penalty on large steering angle
 cost.R_delta  = 0.01    # penalty on large d_theta (keep tiny, it fights gamma)
 cost.Rt_PWM   = 0.1     # penalty on throttle CHANGE between steps (smoothness)
-cost.Rt_steer = 50.0    # penalty on steering CHANGE between steps (smoothness)
+cost.Rt_steer = 10.0    # penalty on steering CHANGE between steps (smoothness)
 cost.Rt_delta = 0.1     # penalty on d_theta CHANGE between steps
 
 # ---- limits (NlpBounds) ----
